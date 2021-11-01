@@ -29,11 +29,26 @@ class Top100Spider(scrapy.Spider):
 
         try:
             brief = response.xpath('//div[@class="movie-brief-container"]')
-            item["name_alt"] = brief.xpath('./div[contains(@class, "ename")]/text()').get()
-            item["tag"] = list(map(str.strip, brief.xpath('(./ul/li)[1]/a/text()').getall()))
-            item["region"] = brief.xpath('(./ul/li)[2]/text()').get().split('/')[0].strip()
-            item["length"] = re.sub(r'[^\x00-\x7F]+', '', brief.xpath('(./ul/li)[2]/text()').get().split('/')[1].strip())
-            item["date"] = re.sub(r'[^\x00-\x7F]+', '', brief.xpath('(./ul/li)[3]/text()').get().strip())
+            try:
+                item["name_alt"] = brief.xpath('./div[contains(@class, "ename")]/text()').get()
+            except:
+                pass
+            try:
+                item["tag"] = list(map(str.strip, brief.xpath('(./ul/li)[1]/a/text()').getall()))
+            except:
+                pass
+            try:
+                item["region"] = brief.xpath('(./ul/li)[2]/text()').get().split('/')[0].strip()
+            except:
+                pass
+            try:
+                item["length"] = re.sub(r'[^\x00-\x7F]+', '', brief.xpath('(./ul/li)[2]/text()').get().split('/')[1].strip())
+            except:
+                pass
+            try:
+                item["date"] = re.sub(r'[^\x00-\x7F]+', '', brief.xpath('(./ul/li)[3]/text()').get().strip())
+            except:
+                pass
         except:
             pass
 
@@ -49,15 +64,27 @@ class Top100Spider(scrapy.Spider):
 
         try:
             box = response.xpath('//div[@class="film-mbox"]/div[@class="film-mbox-item"]')
-            item["box_first_week"] = re.sub(r'[^\x00-\x7F]+', '', box[0].xpath('(./div)[1]/text()').get().strip())
-            item["box_sum"] = re.sub(r'[^\x00-\x7F]+', '', box[1].xpath('(./div)[1]/text()').get().strip())
+            try:
+                item["box_first_week"] = re.sub(r'[^\x00-\x7F]+', '', box[0].xpath('(./div)[1]/text()').get().strip())
+            except:
+                pass
+            try:
+                item["box_sum"] = re.sub(r'[^\x00-\x7F]+', '', box[1].xpath('(./div)[1]/text()').get().strip())
+            except:
+                pass
         except:
             pass
 
         try:
             honor = response.xpath('//div[@class="film-honors"]/div[@class="film-honors-item"]')
-            item["honor_count"] = re.sub(r'[^\x00-\x7F]+', '', honor[0].xpath('(./div)[1]/text()').get().strip())
-            item["nomination_count"] = re.sub(r'[^\x00-\x7F]+', '', honor[1].xpath('(./div)[1]/text()').get().strip())
+            try:
+                item["honor_count"] = re.sub(r'[^\x00-\x7F]+', '', honor[0].xpath('(./div)[1]/text()').get().strip())
+            except:
+                pass
+            try:
+                item["nomination_count"] = re.sub(r'[^\x00-\x7F]+', '', honor[1].xpath('(./div)[1]/text()').get().strip())
+            except:
+                pass
         except:
             pass
 
