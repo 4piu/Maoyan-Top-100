@@ -11,7 +11,7 @@ class MaoyanItem(scrapy.Item):
     url = scrapy.Field()
     rank = scrapy.Field()
     name_cn = scrapy.Field()
-    name_en = scrapy.Field()
+    name_alt = scrapy.Field()
     date = scrapy.Field()
     celebrity = scrapy.Field()
     score = scrapy.Field()
