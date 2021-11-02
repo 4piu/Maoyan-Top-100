@@ -46,7 +46,7 @@ class Top100Spider(scrapy.Spider):
             except:
                 pass
             try:
-                item["date"] = re.sub(r'[^\x00-\x7F]+', '', brief.xpath('(./ul/li)[3]/text()').get().strip())
+                item["date"] = re.sub(r'[^\x00-\x7F]+', '', brief.xpath('(./ul/li)[3]/text()').get().strip()[:10])
             except:
                 pass
         except:
