@@ -38,7 +38,7 @@ class Top100Spider(scrapy.Spider):
             except:
                 pass
             try:
-                item["region"] = brief.xpath('(./ul/li)[2]/text()').get().split('/')[0].strip()
+                item["region"] = [s.strip() for s in re.split(',|，', brief.xpath('(./ul/li)[2]/text()').get().split('/')[0])]
             except:
                 pass
             try:
