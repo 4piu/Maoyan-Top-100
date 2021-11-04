@@ -51,7 +51,7 @@ pipenv shell
 ### Virtual Environment Installation
 
 ```sh
-# with virtual environment activated
+# with virtual environment activated (or add 'pipenv run' before command)
 pip install jupyterlab
 
 jupyter lab
